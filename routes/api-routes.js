@@ -61,7 +61,7 @@ module.exports = function (app) {
 
 
 // PUT route for updating posts
-app.put("/api/woofs", function (req, res) {
+app.put("/api/whoofs", function (req, res) {
   db.whoof.update(
     req.body,
     {

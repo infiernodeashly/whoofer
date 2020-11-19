@@ -91,7 +91,7 @@ $("#whoof-update").on("click", (event) => {
   //   });
   // });
 
-
+  //
   // Delete 
   $("#whoof-delete").on("click", (event) => {
     event.preventDefault();

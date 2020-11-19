@@ -1,6 +1,6 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
-const passport = require('../config/passport');
+const passport = require("../config/passport");
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -51,3 +51,36 @@ module.exports = function (app) {
     }
   });
 };
+
+
+
+
+
+
+
+
+
+// PUT route for updating posts
+app.put("/api/woofs", function (req, res) {
+  db.whoof.update(
+    req.body,
+    {
+      where: {
+        id: req.body.id
+      }
+    }).then(function (dbWhoof) {
+      res.json(dbWhoof);
+    });
+});
+
+
+// DELETE route for deleting posts
+app.delete("/api/whoofs/:id", function (req, res) {
+  db.whoof.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(function (dbWhoof) {
+    res.json(dbWhoof);
+  });
+});

@@ -24,16 +24,16 @@ $("#whoof-submit").on("click", (event) => {
 
   // Make a newwhoof object
   const newwhoof = {
-    author: $("#author")
-      .val()
-      .trim(),
+    // author: $("#author")
+    //   .val()
+    //   .trim(),
     body: $("#whoof-box")
       .val()
       .trim(),
-    createdAt: new Date()
-      .toISOString()
-      .slice(0, 19)
-      .replace("T", " "),
+    // createdAt: new Date()
+    //   .toISOString()
+    //   .slice(0, 19)
+    //   .replace("T", " "),
   };
 
   console.log(newwhoof);
@@ -44,8 +44,6 @@ $("#whoof-submit").on("click", (event) => {
     .then(() => {
       const row = $("<div>");
       row.addClass("whoof");
-
-      row.append("<p>" + newwhoof.author + " whoofed: </p>");
       row.append("<p>" + newwhoof.body + "</p>");
       row.append(
         "<p>On " + new Date(newwhoof.createdAt).toLocaleDateString() + "</p>"

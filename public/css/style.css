@@ -2,3 +2,24 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
+
+h1 {
+  color: white;
+}
+
+h2 {
+  color:darkslategrey;
+  font-weight: bold;
+  
+}
+
+.jumbotron {
+  color: darkslateblue;
+}
+
+
+.whoofbody {
+  background-color: lightgrey;
+  color: black;
+}

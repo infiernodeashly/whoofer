@@ -1,3 +1,5 @@
+// const { ConnectionError } = require("sequelize/types");
+
 // When the page loads, grab and display all of our whoofs
 $.get("/api/all", (data) => {
   if (data.length !== 0) {
@@ -54,3 +56,61 @@ $("#whoof-submit").on("click", (event) => {
   $("#author").val("");
   $("#whoof-box").val("");
 });
+
+
+// 
+// When user clicks update button
+$("#whoof-update").on("click", (event) => {
+  event.preventDefault();
+
+  console.log("udpating whoof");
+
+  $.put("/api/whoofs/:id", function (req, res) {
+    // userWhoof.id ? 
+    if (whoof.author.id === author.id) {
+      whoof.findBypK(req.params.id).then(function (whoof) {
+        whoof.update({
+          whoof: req.body.whoof,
+          tag: req.body.tag
+        }).then((whoof) => {
+          res.json(whoof);
+        });
+      });
+    }
+  });
+  //   connection.query("UPDATE whoofs SET whoof = ? WHERE id = ?", [req.body.movie, req.params.id], function (err, result) {
+  //     if (err) {
+  //       // If an error occurred, send a generic server failure
+  //       return res.status(500).end();
+  //     }
+  //     else if (result.changedRows === 0) {
+  //       // If no rows were changed, then the ID must not exist, so 404
+  //       return res.status(404).end();
+  //     }
+  //     res.status(200).end();
+
+  //   });
+  // });
+
+  //
+  // Delete 
+  $("#whoof-delete").on("click", (event) => {
+    event.preventDefault();
+
+    console.log("deleting whoof");
+
+    $.delete("/whoofs/:id", function (req, res) {
+      if (whoof.author.id === author.id) {
+        whoof.findByPk(req.params.id).then(function (whoof) {
+          whoof.destroy();
+        }).then(() => {
+          res.sendStatus(200);
+        });
+      });
+  });
+})
+
+
+
+
+

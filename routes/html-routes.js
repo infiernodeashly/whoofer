@@ -4,7 +4,7 @@ const path = require("path");
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
-module.exports = function(app) {
+module.exports = function (app) {
   app.get("/", (req, res) => {
     // If the user already has an account send them to the members page
     if (req.user) {
@@ -14,9 +14,9 @@ module.exports = function(app) {
   });
 
   app.get("/login", (req, res) => {
-    // If the user already has an account send them to the members page
+    // If the user already has an account send them to the Whoofer page. 
     if (req.user) {
-      res.redirect("/members");
+      res.redirect("/index");
     }
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });

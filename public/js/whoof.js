@@ -68,14 +68,17 @@ $("#whoof-update").on("click", (event) => {
   console.log("udpating whoof");
 
   $.put("/api/whoofs/:id", function (req, res) {
-    whoof.findBypK(req.params.id).then(function (whoof) {
-      whoof.update({
-        whoof: req.body.whoof,
-        tag: req.body.tag
-      }).then((whoof) => {
-        res.json(whoof);
+    // userWhoof.id ? 
+    if (whoof.author.id === author.id) {
+      whoof.findBypK(req.params.id).then(function (whoof) {
+        whoof.update({
+          whoof: req.body.whoof,
+          tag: req.body.tag
+        }).then((whoof) => {
+          res.json(whoof);
+        });
       });
-    });
+    }
   });
   //   connection.query("UPDATE whoofs SET whoof = ? WHERE id = ?", [req.body.movie, req.params.id], function (err, result) {
   //     if (err) {
@@ -97,12 +100,19 @@ $("#whoof-update").on("click", (event) => {
     event.preventDefault();
 
     console.log("deleting whoof");
+
     $.delete("/whoofs/:id", function (req, res) {
-      whoof.findByPk(req.params.id).then(function (whoof) {
-        whoof.destroy();
-      }).then(() => {
-        res.sendStatus(200);
+      if (whoof.author.id === author.id) {
+        whoof.findByPk(req.params.id).then(function (whoof) {
+          whoof.destroy();
+        }).then(() => {
+          res.sendStatus(200);
+        });
       });
-    });
   });
-});
+})
+
+
+
+
+

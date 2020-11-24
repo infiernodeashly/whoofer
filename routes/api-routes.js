@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -31,10 +32,9 @@ module.exports = function(app) {
   });
 
   // Creating a new Whoof
-
   app.post("/api/new", (req, res) => {
     const userWhoof = {
-      user: req.user.email,
+      UserId: parseInt(req.user.id),
       body: req.body.body,
     };
     db.Whoof.create(userWhoof)
@@ -46,6 +46,61 @@ module.exports = function(app) {
         res.status(401).json(err);
       });
   });
+
+  // Get all whoofs joined with users
+  app.get(
+    "/api/whoofs",
+    /*isAuthenticated,*/ function(req, res) {
+      db.User.findAll({
+        include: [db.Whoof],
+      })
+        .then(function(dbWhoof) {
+          res.json(dbWhoof);
+        })
+        .catch((err) => {
+          res.status(500).end();
+          throw err;
+        });
+    }
+  );
+
+  app.delete(
+    "/api/whoofs/:id",
+    /*isAuthenticated,*/ function(req, res) {
+      db.Whoof.destroy({
+        where: {
+          id: req.params.id,
+        },
+      })
+        .then(function(dbWhoof) {
+          res.json(dbWhoof);
+        })
+        .catch((err) => {
+          res.status(500).end();
+          throw err;
+        });
+    }
+  );
+
+  // Get all whoofs
+  // app.get("/api/whoofs", (req, res) => {
+  //   // Here we add an "include" property to our options in our findAll query
+  //   // We set the value to an array of the models we want to include in a left outer join
+  //   // In this case, just db.Post
+  //   if (req.user) {
+  //     // res.redirect("/members");
+  //     db.Whoof.findAll({})
+  //       .then((dbWhoof) => {
+  //         res.json(dbWhoof);
+  //       })
+  // .catch((err) => {
+  //   res.status(500).end();
+  //   throw err;
+  // });
+  //   } else {
+  //     res.redirect("/login");
+  //   }
+  // });
 
   // Route for logging user out
   app.get("/logout", (req, res) => {

@@ -21,30 +21,20 @@ $("#whoof-submit").on("click", (event) => {
   event.preventDefault();
 
   // Make a newwhoof object
-  const newwhoof = {
-    // author: $("#author")
-    //   .val()
-    //   .trim(),
+  const newWhoof = {
     body: $("#whoof-box")
       .val()
       .trim(),
-    // createdAt: new Date()
-    //   .toISOString()
-    //   .slice(0, 19)
-    //   .replace("T", " "),
   };
-
-  console.log(newwhoof);
-
   // Send an AJAX POST-request with jQuery
-  $.post("/api/new", newwhoof)
+  $.post("/api/new", newWhoof)
     // On success, run the following code
     .then(() => {
       const row = $("<div>");
       row.addClass("whoof");
-      row.append("<p>" + newwhoof.body + "</p>");
+      row.append("<p>" + newWhoof.body + "</p>");
       row.append(
-        "<p>On " + new Date(newwhoof.createdAt).toLocaleDateString() + "</p>"
+        "<p>On " + new Date(newWhoof.createdAt).toLocaleDateString() + "</p>"
       );
 
       $("#whoof-area").prepend(row);

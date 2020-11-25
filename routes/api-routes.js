@@ -111,11 +111,6 @@ module.exports = function (app) {
   });
 
 
-  // Route for logging user out
-  app.get("/logout", (req, res) => {
-    req.logout();
-    res.redirect("/");
-  });
 
   app.get("/members", isAuthenticated, (req, res) => {
     db.Whoof.findAll({

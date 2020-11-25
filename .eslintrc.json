@@ -3,12 +3,12 @@
     "ecmaVersion": 2017
   },
   "env": {
-    "es6": true,
+    // "es6": true,
     "browser": true,
     "commonjs": true,
     "node": true
   },
-  "extends": "prettier",
+  // "extends": "prettier",
   "plugins": ["prettier"],
   "rules": {
     "array-callback-return": "error",
@@ -29,9 +29,9 @@
     "no-unreachable": "error",
     "no-unused-vars": "error",
     "no-var": "error",
-    "prefer-arrow-callback": "error",
+    // "prefer-arrow-callback": "error",
     "prefer-const": "error",
-    "prettier/prettier": "error",
+    // "prettier/prettier": "error",
     "quotes": ["error", "double"],
     "semi": ["error", "always"],
     "vars-on-top": "error",

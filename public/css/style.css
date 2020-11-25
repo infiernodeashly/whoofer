@@ -1,0 +1,44 @@
+form.signup,
+form.login {
+  margin-top: 50px;
+}
+
+#whoof-submit {
+  font-weight: 800;
+}
+
+.whoof {
+  border: 1px solid #dadfe2;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  padding-right: 1rem;
+  padding-left: 0.7rem;
+  padding-top: 0.7rem;
+}
+
+.jumbotron {
+  background-color: #29a645;
+  color: lightgray;
+}
+
+.whoof h3 {
+  font-weight: 300;
+  color: #29a645;
+}
+
+.whoof-update,
+.whoof-delete {
+  max-height: 3rem;
+}
+
+.whoof hr {
+  margin-bottom: 0;
+}
+.date {
+  padding-top: 0.3rem;
+}
+
+#previous-whoofs {
+  color: #29a645;
+  text-align: center;
+}

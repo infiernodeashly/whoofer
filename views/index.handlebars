@@ -1,0 +1,67 @@
+<div class="jumbotron">
+    <h1 class="text-center">Whoofer!</h1>
+</div>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-0 col-lg-1"></div>
+        <div class="col-sm-12 col-lg-10">
+            <textarea class="form-control" rows="3" id="whoof-box" placeholder="Enter Whoof Here!"></textarea>
+            <button id="log-out" class="btn btn-lg btn-danger pull-left col-2 col-lg-1  mt-4"><i
+                    class="fas fa-sign-out-alt"></i></button>
+            <button id="chart" class="btn btn-lg btn-danger pull-left col-2 col-lg-1  mt-4 ml-1"><i
+                    class="fas fa-chart-bar"></i></button>
+
+            <button id="whoof-submit" class="btn btn-lg btn-success pull-right col-3 col-lg-2  mt-4">WH<i
+                    class="fas fa-paw"></i><i class="fas fa-paw"></i>F! </button>
+        </div>
+        <div class="col-sm-0 col-lg-1"></div>
+    </div>
+    <div class="modal fade" id="update-whoof">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Edit whoof!</h3>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="col-12" id="placeholder">
+                </div>
+                <div class="modal-footer">
+                    <input class="btn btn-danger" data-dismiss="modal" value="Close">
+                    <input class="btn btn-success" value="Save" id="save-whoof">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-sm-12 col-lg-10">
+            <h1 id="previous-whoofs">Previous Whoofs!</h1>
+            <hr>
+            <div id="whoof-area">
+                {{#each whoofs}}
+                <div class="whoof">
+                    <div class="row">
+                        <h3 class="whoof-text col-8 col-lg-10">{{this.dataValues.body}}</h3>
+                        <button class="whoof-update btn-lg btn-primary pull-right col-2 col-lg-1"
+                            data-id="{{this.dataValues.id}}"><i class="fas fa-edit"></i></button>
+                        <button class="whoof-delete btn-lg btn-danger pull-right col-2 col-lg-1"
+                            data-id="{{this.dataValues.id}}"><i class="far fa-trash-alt"></i></button>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <h6 class="date col-12 mt-2">by: {{this.dataValues.User.dataValues.email}} on:
+                            {{this.dataValues.createdAt}}</h6>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+
+</div>
+
+<script type="text/javascript" src="js/whoof.js"></script>

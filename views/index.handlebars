@@ -5,20 +5,45 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-            <br>
-            <p class="cool-font">Whoof!</p>
+        <div class="col-sm-0 col-lg-1"></div>
+        <div class="col-sm-12 col-lg-10">
             <textarea class="form-control" rows="3" id="whoof-box" placeholder="Enter Whoof Here!"></textarea>
-            <button id="whoof-submit" class="btn btn-lg pull-right">whoof!</button>
+            <button id="log-out" class="btn btn-lg btn-danger pull-left col-2 col-lg-1  mt-4"><i
+                    class="fas fa-sign-out-alt"></i></button>
+            <button id="whoof-submit" class="btn btn-lg btn-success pull-right col-3 col-lg-2  mt-4">WH<i
+                    class="fas fa-paw"></i><i class="fas fa-paw"></i>F! </button>
         </div>
+        <div class="col-sm-0 col-lg-1"></div>
     </div>
 
     <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-            <h2>Whoof!</h2>
+        <div class="col-lg-1"></div>
+        <div class="col-sm-12 col-lg-10">
+            <h1 id="previous-whoofs">Previous Whoofs!</h1>
             <hr>
-            <div id="whoof-area"></div>
+
+
+
+            <div id="whoof-area">
+                {{#each whoofs}}
+                <div class="whoof">
+                    <div class="row">
+                        <h3 class="whoof-text col-8 col-lg-10">{{this.dataValues.body}}</h3>
+                        <button class="whoof-update btn-lg btn-primary pull-right col-2 col-lg-1"
+                            data-id="{{this.dataValues.id}}"><i class="fas fa-edit"></i></button>
+                        <button class="whoof-delete btn-lg btn-danger pull-right col-2 col-lg-1"
+                            data-id="{{this.dataValues.id}}"><i class="far fa-trash-alt"></i></button>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <h6 class="date col-12 mt-2">by: {{this.dataValues.User.dataValues.email}} on:
+                            {{this.dataValues.createdAt}}</h6>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
         </div>
+        <div class="col-lg-1"></div>
     </div>
 
 </div>

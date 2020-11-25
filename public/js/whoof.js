@@ -94,23 +94,18 @@ $("#whoof-update").on("click", (event) => {
 
   //
   // Delete 
-  $("#whoof-delete").on("click", (event) => {
-    event.preventDefault();
+  // $("#whoof-delete").on("click", (event) => {
+  //   event.preventDefault();
 
-    console.log("deleting whoof");
+  //   console.log("deleting whoof");
 
-    $.delete("/whoofs/:id", function (req, res) {
-      if (whoof.author.id === author.id) {
-        whoof.findByPk(req.params.id).then(function (whoof) {
-          whoof.destroy();
-        }).then(() => {
-          res.sendStatus(200);
-        });
-      });
-  });
+  //   $.delete("/whoofs/:id", function (req, res) {
+  //     if (whoof.author.id === author.id) {
+  //       whoof.findByPk(req.params.id).then(function (whoof) {
+  //         whoof.destroy();
+  //       }).then(() => {
+  //         res.sendStatus(200);
+  //       });
+  //     });
+  // });
 })
-
-
-
-
-

@@ -2,43 +2,62 @@
   <h1 class="text-center">Whoofer!</h1>
 </div>
 
-<div class="container">
+<section class="welcomebgImg">
 
-  <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-      <br>
-      <p class="cool-font">Whoof!</p>
-      <textarea class="whoofbody form-control" rows="3" id="whoof-box" placeholder="Enter Whoof Here!"></textarea>
-      <button id="whoof-submit" class="btn btn-lg pull-right">whoof!</button>
+  <!-- <div class="welcomebgImgWrap"> -->
+  <div class="container">
+
+    <div class="row">
+      <div class="col-sm-2 "></div>
+      <div class="col-sm-8">
+        <p class="cool-font">Name</p>
+        <input class=" form-control input" type="text" id="author" placeholder="Enter Your Name">
+        <br>
+        <p class="cool-font">Whoof!</p>
+        <textarea class=" form-control whoof" rows="3" id="whoof-box" placeholder="Enter Whoof Here!"></textarea>
+        <button id="whoof-submit" class="btn btn-lg pull-right"><i class="fas fa-dog"> <i class="fa fa-paper-plane"
+              aria-hidden="true"></i></i></br>Whoof!</button>
+      </div>
+      <div class="col-sm-2 "></div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2 "></div>
+      <div class="col-sm-8">
+        <h2>Whoofs! <i class="i2 fas fa-dog"></i></h2>
+        <hr>
+        <div id="whoof-area">
+          <ul>
+            {{#each whoof}}
+            <li>
+              <p>
+                {{this.id}}. {{this.whoof}}
+
+                <button data-whoofid="{{this.id}}" class="whoof-delete"> <i class="fas fa-dog icon-large"> <i
+                      class="fa fa-trash" aria-hidden="true"></i></i></br>Delete!</button>
+                <button data-whoofid="{{this.id}}" class="whoof-update"><i class="fas fa-dog"> <i
+                      class="far fa-arrow-alt-circle-up"></i></i></br>Update!</button>
+              </p>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+
+      </div>
+
     </div>
   </div>
-
-  <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-      <h2>Whoof!</h2>
-      <hr>
-      <div id="whoofbody whoof-area"></div>
-    </div>
-    <button id="whoof-update" class="btn btn-lg pull-right">Update</button>
-    <button id="whoof-delete" class="btn btn-lg pull-right">Delete</button>
-  </div>
-
-</div>
+  <div class="col-sm-2 "></div>
 
 
-<section class="copyrightSection">
-  <section class="copyrightContainer level-item">
-
-    <i class="copyrightIcon">©</i>
-    <p>2020</p>
-    <p>Taleh Aliyev</p>
-    <p>Ashly Mayle</p>
-    <p>Nigara Sawirdin </p>
-    <p>Ashraf Takla </p>
-
-
-
-  </section>
 </section>
+<footer class="footer">
+
+  {{!-- <div class="container"> --}}
+  <p class="text-muted">© 2020 Copyright </p>
+  <p class="text-muted">Taleh Aliyev,Ashly Mayle, Nigara Sawirdin, Ashraf Takla </p>
+  {{!-- </div> --}}
+</footer>
+<div></div>
 
 <script type="text/javascript" src="js/whoof.js"></script>

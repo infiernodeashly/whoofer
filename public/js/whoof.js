@@ -1,6 +1,4 @@
 $(document).ready(() => {
-  let whoofId;
-
   $(".whoof-delete").on("click", (event) => {
     event.preventDefault();
     let id = -1;
@@ -33,15 +31,39 @@ $(document).ready(() => {
 
   $(".whoof-update").on("click", (event) => {
     event.preventDefault();
-
     let whoofId = -1;
     if ($(event.target).is("i")) {
       whoofId = $(event.target.parentElement).data("id");
     } else {
       whoofId = $(event.target).data("id");
     }
+    $.ajax({
+      url: "/api/whoofs/" + whoofId,
+      method: "GET",
+    }).then((data) => {
+      console.log(data);
+      $("#placeholder").val(data.body);
+      $("#update-whoof").modal("show");
 
-    $("#update-whoof").modal("show");
+      $(document).on("click", "#save-whoof", () => {
+        const editedWhoof = {
+          body: $("#placeholder").val()
+        };
+
+        console.log(editedWhoof);
+        $.ajax({
+          url: "/api/whoofs/" + whoofId,
+          method: "PUT",
+          data: editedWhoof
+        }).then(() => {
+          $("#update-whoof").modal("show");
+          location.reload();
+        }).catch((err) => {
+          throw err;
+        });
+      });
+    });
+
     console.log(whoofId);
   });
 

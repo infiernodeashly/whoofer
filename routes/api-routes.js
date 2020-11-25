@@ -63,6 +63,27 @@ module.exports = function (app) {
     }
   );
 
+  // Get whoof with a given id
+  app.get(
+    "/api/whoofs/:id",
+    /*isAuthenticated,*/ function (req, res) {
+      db.Whoof.findOne({
+        where: {
+          id: req.params.id
+        },
+        include: [db.User],
+      })
+        .then(function (dbWhoof) {
+          // res.render("whoofs", { whoofs: dbWhoof });
+          res.json(dbWhoof);
+        })
+        .catch((err) => {
+          res.status(500).end();
+          throw err;
+        });
+    }
+  );
+
   // Delete whoof with a given id
   app.delete(
     "/api/whoofs/:id",
@@ -83,15 +104,18 @@ module.exports = function (app) {
   );
 
   // PUT route for updating posts
-  app.put("/api/whoofs", function (req, res) {
-    db.Whoof.update(req.body, {
+  app.put("/api/whoofs/:id", function (req, res) {
+    console.log(JSON.stringify(req.body));
+    console.log(req.params.id);
+    db.Whoof.update({
+      body: req.body.body
+    }, {
       where: {
-        id: req.body.id,
-      },
+        id: req.params.id
+      }
+    }).then(function (dbWhoof) {
+      res.json(dbWhoof);
     })
-      .then(function (dbWhoof) {
-        res.json(dbWhoof);
-      })
       .catch((err) => {
         res.status(500).end();
         throw err;

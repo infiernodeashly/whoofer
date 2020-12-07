@@ -1,6 +1,10 @@
    # Whoofer App
   ## Project description
   Whoofer is the new App replacing Twitter
+  
+  URL: https://lit-badlands-96232.herokuapp.com/
+  Repository: https://github.com/infiernodeashly/whoofer
+  
   ## Table of Contents
   * [Description](#description)
   * [Installation](#installation)

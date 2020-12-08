@@ -1,6 +1,9 @@
    # Whoofer App
   ## Project description
   Whoofer is the new App replacing Twitter
+  
+  URL: https://glacial-brushlands-67266.herokuapp.com/
+  Repository: https://github.com/infiernodeashly/whoofer
   ## Table of Contents
   * [Description](#description)
   * [Installation](#installation)
